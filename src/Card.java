@@ -1,7 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class Card {
+public class Card implements Comparable<Card> {
     private int rank;
     private int suit;
 
@@ -27,6 +27,10 @@ public class Card {
 
     }
 
+    public int getRankValue(){
+        return  this.rank;
+    }
+
     public String getSuit(){
         return Card.suits[this.suit];
 
@@ -45,6 +49,13 @@ public class Card {
 
     public String toString(){
         return getRank() + " of " + getSuit();
+    }
+
+    public int compareTo(Card anotherCard){
+        if(this.getRankValue() > anotherCard.getRankValue()) return 1;
+        else if(this.getRankValue() < anotherCard.getRankValue()) return -1;
+        else return 0;
+
     }
 
 }
